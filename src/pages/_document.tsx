@@ -14,6 +14,10 @@ const DocumentWithAntD = () => (
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="theme-color" content="#008000" />
 
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={"anonymous"} />
+      <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet" />
+
       <link rel="apple-touch-icon" href="/icons/maskable-icon-512x512.png" />
       <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-180x180.png" />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />

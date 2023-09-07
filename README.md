@@ -3,6 +3,7 @@
 First, run the development server:
 
 ```bash
+yarn
 yarn dev
 ```
 
@@ -13,16 +14,18 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Theme Design System
 This project uses [ant design](https://ant.design) design system. The configuration for the theme provider is as follows
 
-```json
-{
-  "token": {
-    "colorPrimary": "#008000",
-    "colorInfo": "#008000",
-    "borderRadius": 3,
-    "wireframe": false
+```ts
+import {theme} from "antd";
+
+
+const CocktailTheme: ThemeConfig = {
+  token: {
+    colorPrimary: "#008000",
+    colorInfo: "#008000",
+    borderRadius: 3,
+    wireframe: false,
+    fontFamily: "Caveat"
   },
-  "algorithm": [
-    "dark"
-  ]
+  algorithm: theme.darkAlgorithm
 }
 ```
