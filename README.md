@@ -19,13 +19,13 @@ import {theme} from "antd";
 
 
 const CocktailTheme: ThemeConfig = {
-  token: {
-    colorPrimary: "#008000",
-    colorInfo: "#008000",
-    borderRadius: 3,
-    wireframe: false,
-    fontFamily: "Caveat"
-  },
-  algorithm: theme.darkAlgorithm
+    token: {
+        colorPrimary: "#009000",
+        colorInfo: "#009000",
+        borderRadius: 3,
+        wireframe: false,
+        fontFamily: "Caveat",
+        fontSize: 18
+    }
 }
 ```

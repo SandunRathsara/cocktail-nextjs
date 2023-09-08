@@ -1,19 +1,12 @@
-import { Menu } from "antd"
-import { useState } from "react"
-import { MENU_ITEMS, MenuItemKey } from "@/features/constants/menu-items"
+import MobileAppBar from "@/features/AppContainer/components/MobileAppBar"
+import DesktopAppBar from "@/features/AppContainer/components/DesktopAppBar"
+import { useMediaQuery } from "react-responsive"
 
 const AppContainer = () => {
-  const [item, setItem] = useState<MenuItemKey>("home")
-  return (
-    <>
-      <Menu
-        onClick={event => setItem(event.key as MenuItemKey)}
-        items={MENU_ITEMS}
-        selectedKeys={[item]}
-        mode="horizontal"
-      />
-    </>
-  )
+  const isMobile = useMediaQuery({ maxWidth: 767 })
+
+  if (isMobile) return <MobileAppBar />
+  else return <DesktopAppBar />
 }
 
 export default AppContainer
