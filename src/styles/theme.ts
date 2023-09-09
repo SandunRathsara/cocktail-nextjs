@@ -2,8 +2,8 @@ import { ThemeConfig } from "antd"
 
 export const COCKTAIL_THEME: ThemeConfig = {
   token: {
-    colorPrimary: "#009000",
-    colorInfo: "#009000",
+    colorPrimary: "#CF3B12",
+    colorInfo: "#CF3B12",
     borderRadius: 3,
     wireframe: false,
     fontFamily: "Caveat",
