@@ -12,7 +12,7 @@ const DocumentWithAntD = () => (
       <meta name="description" content="Installable Cocktails Reciepe Book" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="theme-color" content="#008000" />
+      <meta name="theme-color" content="#251411" />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={"anonymous"} />
