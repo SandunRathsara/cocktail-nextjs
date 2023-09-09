@@ -4,6 +4,9 @@ import { useMediaQuery } from "react-responsive"
 import { CSSProperties, FC, PropsWithChildren, useEffect } from "react"
 import { theme } from "antd"
 import { useThemeToggle } from "@/features/AppContainer/theme-context/toggle-theme"
+import PullToRefresh from "pulltorefreshjs"
+import ReactDOMServer from "react-dom/server"
+import { ArrowUpOutlined, LoadingOutlined } from "@ant-design/icons"
 
 const AppContainer: FC<PropsWithChildren> = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 })
@@ -13,6 +16,14 @@ const AppContainer: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     document.body.style.background = token.colorPrimaryBg
+    PullToRefresh.init({
+      mainElement: "body",
+      onRefresh() {
+        window.location.reload()
+      },
+      iconArrow: ReactDOMServer.renderToString(<ArrowUpOutlined />),
+      iconRefreshing: ReactDOMServer.renderToString(<LoadingOutlined />)
+    })
   }, [themeToggle, token.colorPrimaryBg])
 
   return (
