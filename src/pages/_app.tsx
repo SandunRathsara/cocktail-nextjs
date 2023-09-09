@@ -16,8 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <ThemeToggleProvider>
           <CocktailThemeProvider>
             <main className={fonts.className}>
-              <AppContainer />
-              <Component {...pageProps} />
+              <AppContainer>
+                <Component {...pageProps} />
+              </AppContainer>
             </main>
           </CocktailThemeProvider>
         </ThemeToggleProvider>
