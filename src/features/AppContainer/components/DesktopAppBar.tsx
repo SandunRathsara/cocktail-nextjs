@@ -15,7 +15,7 @@ const DesktopAppBar = () => {
 
   return (
     <div style={styles.container}>
-      <Typography.Text style={{ fontSize: "1.5rem" }}>Cocktails</Typography.Text>
+      <Typography.Text style={styles.appBarTitle}>Cocktails</Typography.Text>
       <Menu
         style={styles.menu}
         onClick={event => setItem(event.key as MenuItemKey)}
@@ -30,6 +30,7 @@ const DesktopAppBar = () => {
 
 type Styles = () => {
   container: CSSProperties
+  appBarTitle: CSSProperties
   menu: CSSProperties
   themeButton: CSSProperties
 }
@@ -46,6 +47,7 @@ const useStyles: Styles = () => {
       paddingLeft: 20,
       paddingRight: 20
     },
+    appBarTitle: { fontSize: "1.5rem", cursor: "default" },
     menu: { background: token.colorPrimaryBg, flex: 1 },
     themeButton: {}
   }

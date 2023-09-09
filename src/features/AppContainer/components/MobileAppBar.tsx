@@ -22,8 +22,8 @@ const MobileAppBar = () => {
         <div style={styles.avatarContainer}>
           <Avatar src={"/icons/maskable-icon-512x512.png"} size={100} />
           <div style={styles.titleContainer}>
-            <Typography.Text style={{ fontSize: 40 }}>Cocktails</Typography.Text>
-            <Typography.Text style={{ fontSize: 20 }}>The largest cocktail database</Typography.Text>
+            <Typography.Text style={styles.drawerTitle}>Cocktails</Typography.Text>
+            <Typography.Text style={styles.drawerSubTitle}>The largest cocktail database</Typography.Text>
           </div>
         </div>
         <Space direction={"vertical"} style={styles.menuItemsContainer}>
@@ -54,6 +54,8 @@ type Styles = () => {
   appBarContainer: CSSProperties
   appBarTitle: CSSProperties
   drawer: CSSProperties
+  drawerTitle: CSSProperties
+  drawerSubTitle: CSSProperties
   avatarContainer: CSSProperties
   titleContainer: CSSProperties
   menuItemsContainer: CSSProperties
@@ -71,10 +73,12 @@ const useStyles: Styles = () => {
       alignItems: "center",
       paddingRight: "1rem"
     },
-    appBarTitle: { fontSize: "1.5rem" },
+    appBarTitle: { fontSize: "1.5rem", cursor: "default" },
     drawer: {
       background: token.colorPrimaryBg
     },
+    drawerTitle: { fontSize: 40, cursor: "default" },
+    drawerSubTitle: { fontSize: 20, cursor: "default" },
     avatarContainer: {
       display: "flex",
       alignItems: "end",
