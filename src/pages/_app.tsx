@@ -2,8 +2,8 @@ import "@/styles/globals.css"
 import type { AppProps } from "next/app"
 import { Caveat } from "next/font/google"
 import AppContainer from "@/features/AppContainer"
-import { ThemeToggleProvider } from "@/features/theme-context/toggle-theme"
-import { CocktailThemeProvider } from "@/features/theme-context/cocktail-theme-provider"
+import { ThemeToggleProvider } from "@/features/AppContainer/theme-context/toggle-theme"
+import { CocktailThemeProvider } from "@/features/AppContainer/theme-context/cocktail-theme-provider"
 
 const fonts = Caveat({ subsets: ["latin"] })
 

@@ -1,14 +1,17 @@
-import { CSSProperties, useState } from "react"
-import { MENU_ITEMS, MenuItemKey } from "@/features/constants/menu-items"
+import { CSSProperties, useMemo, useState } from "react"
+import { MENU_ITEMS, MenuItemKey } from "@/features/AppContainer/constants/menu-items"
 import { Menu, theme, Typography } from "antd"
-import { useThemeToggle } from "@/features/theme-context/toggle-theme"
+import { useThemeToggle } from "@/features/AppContainer/theme-context/toggle-theme"
 import { DarkModeSwitch } from "react-toggle-dark-mode"
+import { useRouter } from "next/router"
 
 const DesktopAppBar = () => {
   const styles = useStyles()
   const { theme, toggleTheme } = useThemeToggle()
+  const router = useRouter()
+  const path = useMemo(() => (router?.pathname?.split("/").pop() as MenuItemKey) || "home", [router])
 
-  const [item, setItem] = useState<MenuItemKey>("home")
+  const [item, setItem] = useState<MenuItemKey>(path)
 
   return (
     <div style={styles.container}>
@@ -16,7 +19,7 @@ const DesktopAppBar = () => {
       <Menu
         style={styles.menu}
         onClick={event => setItem(event.key as MenuItemKey)}
-        items={MENU_ITEMS}
+        items={MENU_ITEMS()}
         selectedKeys={[item]}
         mode="horizontal"
       />

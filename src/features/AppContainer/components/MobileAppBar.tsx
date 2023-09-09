@@ -1,14 +1,17 @@
-import { CSSProperties, useState } from "react"
+import { CSSProperties, useMemo, useState } from "react"
 import { theme, Typography, Button, Drawer, Space, Avatar } from "antd"
 import MenuOutlined from "@ant-design/icons/MenuOutlined"
-import { MENU_ITEMS } from "@/features/constants/menu-items"
+import { MENU_ITEMS } from "@/features/AppContainer/constants/menu-items"
 import { DarkModeSwitch } from "react-toggle-dark-mode"
-import { useThemeToggle } from "@/features/theme-context/toggle-theme"
+import { useThemeToggle } from "@/features/AppContainer/theme-context/toggle-theme"
+import { useRouter } from "next/router"
 
 const MobileAppBar = () => {
   const styles = useStyles()
   const { theme, toggleTheme } = useThemeToggle()
   const [openDrawer, setOpenDrawer] = useState(false)
+  const router = useRouter()
+  const path = useMemo(() => router.pathname.split("/").pop(), [router])
 
   return (
     <div style={styles.appBarContainer}>
@@ -24,8 +27,18 @@ const MobileAppBar = () => {
           </div>
         </div>
         <Space direction={"vertical"} style={styles.menuItemsContainer}>
-          {MENU_ITEMS.map(item => (
-            <Button type={"text"} block key={item.key} icon={item.icon} style={{ display: "flex" }} size={"large"}>
+          {MENU_ITEMS().map(item => (
+            <Button
+              type={path === item.key ? "primary" : "text"}
+              block
+              key={item.key}
+              icon={item.icon}
+              style={{ display: "flex" }}
+              size={"large"}
+              onClick={() => {
+                item.onClick().then(() => setOpenDrawer(false))
+              }}
+            >
               {item.label}
             </Button>
           ))}
