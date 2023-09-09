@@ -16,6 +16,9 @@ const AppContainer: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     document.body.style.background = token.colorPrimaryBg
+  }, [themeToggle, token.colorPrimaryBg])
+
+  useEffect(() => {
     PullToRefresh.init({
       mainElement: "body",
       onRefresh() {
@@ -24,7 +27,8 @@ const AppContainer: FC<PropsWithChildren> = ({ children }) => {
       iconArrow: ReactDOMServer.renderToString(<ArrowUpOutlined />),
       iconRefreshing: ReactDOMServer.renderToString(<LoadingOutlined />)
     })
-  }, [themeToggle, token.colorPrimaryBg])
+    return PullToRefresh.destroyAll
+  }, [])
 
   return (
     <div>
