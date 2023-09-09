@@ -1,8 +1,8 @@
 import { HeartOutlined, HomeOutlined } from "@ant-design/icons"
-import { MenuProps } from "antd"
 
 // Keys in following MENU_ITEMS should always be included in the MenuItemKey Type
-export const MENU_ITEMS: MenuProps["items"] = [
+// MENU_ITEMS constant is type of MenuProps["items"].
+export const MENU_ITEMS = [
   {
     label: "Home",
     key: "home",
