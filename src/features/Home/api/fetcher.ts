@@ -18,7 +18,7 @@ export const fetchCocktails = async ([url, searchString]: string[]) => {
 const fetchRandomCocktails = async (url: string) => {
   const cocktails: Drink[] = []
   let count = 0
-  while (count < 5) {
+  while (count < 6) {
     const data = await fetch(url)
 
     if (!data.ok) throw new Error("Error fetching cocktails")

@@ -44,7 +44,9 @@ const MobileAppBar = () => {
           ))}
         </Space>
       </Drawer>
-      <Typography.Text style={styles.appBarTitle}>Cocktails</Typography.Text>
+      <div style={styles.appBarTitleContainer}>
+        <Typography.Text style={styles.appBarTitle}>Cocktails</Typography.Text>
+      </div>
       <DarkModeSwitch checked={theme === "dark"} onChange={toggleTheme} size={30} />
     </div>
   )
@@ -53,6 +55,7 @@ const MobileAppBar = () => {
 type Styles = () => {
   appBarContainer: CSSProperties
   appBarTitle: CSSProperties
+  appBarTitleContainer: CSSProperties
   drawer: CSSProperties
   drawerTitle: CSSProperties
   drawerSubTitle: CSSProperties
@@ -67,18 +70,36 @@ const useStyles: Styles = () => {
   return {
     appBarContainer: {
       background: token.colorPrimaryBg,
-      minHeight: 50,
+      height: 46,
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
       paddingRight: "1rem"
     },
-    appBarTitle: { fontSize: "1.5rem", cursor: "default" },
+    appBarTitle: {
+      fontSize: "1.5rem",
+      cursor: "default"
+    },
+    appBarTitleContainer: {
+      borderBottomStyle: "solid",
+      borderBottomWidth: 1,
+      borderBottomColor: token.colorBorder,
+      flex: 1,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    },
     drawer: {
       background: token.colorPrimaryBg
     },
-    drawerTitle: { fontSize: 40, cursor: "default" },
-    drawerSubTitle: { fontSize: 20, cursor: "default" },
+    drawerTitle: {
+      fontSize: 40,
+      cursor: "default"
+    },
+    drawerSubTitle: {
+      fontSize: 20,
+      cursor: "default"
+    },
     avatarContainer: {
       display: "flex",
       alignItems: "end",

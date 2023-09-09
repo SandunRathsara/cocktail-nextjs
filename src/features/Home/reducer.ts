@@ -22,7 +22,7 @@ export default function useHome() {
   }, [cocktailFetchingError, notification])
 
   const addToFavourites = (id: string) => {
-    notification.success({ message: "Added to favourites successfully!" })
+    notification.info({ message: "Favourites features is yet to be implemented!" })
   }
 
   return {
