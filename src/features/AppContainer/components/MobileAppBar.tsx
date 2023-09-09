@@ -8,7 +8,7 @@ import { useThemeToggle } from "@/features/theme-context/toggle-theme"
 const MobileAppBar = () => {
   const styles = useStyles()
   const { theme, toggleTheme } = useThemeToggle()
-  const [openDrawer, setOpenDrawer] = useState(true)
+  const [openDrawer, setOpenDrawer] = useState(false)
 
   return (
     <div style={styles.appBarContainer}>
