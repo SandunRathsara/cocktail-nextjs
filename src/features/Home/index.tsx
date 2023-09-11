@@ -12,7 +12,7 @@ const Home: FC = () => {
 
   const data = useMemo(
     () =>
-      (state.drinks || []).map(drink => ({
+      (state?.drinks || []).map(drink => ({
         drink,
         actions: [
           <Button
@@ -29,7 +29,7 @@ const Home: FC = () => {
 
   return (
     <div style={styles.container}>
-      <Filters onSearch={value => actions.setSearchString(value)} />
+      <Filters onSearch={value => actions.setSearchString(value)} onReload={() => actions.refetchCocktails()} />
       <DrinkList loading={state.isCocktailFetching || state.cocktailsRefetching} data={data} />
     </div>
   )
