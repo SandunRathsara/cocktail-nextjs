@@ -4,6 +4,7 @@ import DrinkList from "@/components/DrinkList"
 import { useMediaQuery } from "react-responsive"
 import { Button } from "antd"
 import { HeartOutlined } from "@ant-design/icons"
+import Filters from "@/features/Home/components/Filters"
 
 const Home: FC = () => {
   const { state, actions } = useHome()
@@ -28,6 +29,7 @@ const Home: FC = () => {
 
   return (
     <div style={styles.container}>
+      <Filters onSearch={value => actions.setSearchString(value)} />
       <DrinkList loading={state.isCocktailFetching || state.cocktailsRefetching} data={data} />
     </div>
   )
