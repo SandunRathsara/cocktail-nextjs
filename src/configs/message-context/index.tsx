@@ -1,6 +1,5 @@
 import { createContext, FC, PropsWithChildren, useContext } from "react"
 import { message as Message } from "antd"
-import { useMediaQuery } from "react-responsive"
 import { MessageInstance } from "antd/es/message/interface"
 
 const MessageContext = createContext<MessageInstance>({} as MessageInstance)
