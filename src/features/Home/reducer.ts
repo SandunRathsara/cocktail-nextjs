@@ -9,7 +9,7 @@ export default function useHome() {
   const notification = useNotification()
 
   const {
-    data: cocktails,
+    data: drinks,
     error: cocktailFetchingError,
     isLoading: isCocktailFetching,
     mutate: refetchCocktails,
@@ -26,7 +26,7 @@ export default function useHome() {
   }
 
   return {
-    state: { cocktails, cocktailFetchingError, isCocktailFetching, cocktailsRefetching },
+    state: { drinks, cocktailFetchingError, isCocktailFetching, cocktailsRefetching },
     actions: { refetchCocktails, setSearchString, addToFavourites }
   }
 }

@@ -1,5 +1,4 @@
-import { Button, Col, Row } from "antd"
-import { HeartOutlined } from "@ant-design/icons"
+import { Col, Row } from "antd"
 import { ReactNode, useMemo } from "react"
 import DrinkCard from "@/components/DrinkCard"
 import { Drink } from "@/types/drink.interface"
@@ -8,12 +7,7 @@ import LoadingDrinkList from "@/components/DrinkList/LoadingDrinkList"
 
 type DrinkListProps = {
   loading: boolean
-  drinks: Drink[]
-  cardAction: {
-    label: string
-    action: (cocktail: Drink) => void
-    icon: ReactNode
-  }
+  data: { drink: Drink; actions: ReactNode[] }[]
 }
 
 const DrinkList = (props: DrinkListProps) => {
@@ -30,23 +24,14 @@ const DrinkList = (props: DrinkListProps) => {
 
   return (
     <Row align={"top"} gutter={[16, 16]} wrap>
-      {props.drinks?.map(drink => (
+      {props.data?.map(({ drink, actions }) => (
         <Col key={drink.image} span={span}>
           <DrinkCard
             key={drink.image}
             image={drink.image}
             name={drink.title}
             category={drink.category}
-            actions={[
-              <Button
-                type={"text"}
-                key={drink.title}
-                icon={props.cardAction.icon}
-                onClick={() => props.cardAction.action(drink)}
-              >
-                {props.cardAction.label} <HeartOutlined />
-              </Button>
-            ]}
+            actions={actions}
           />
         </Col>
       ))}

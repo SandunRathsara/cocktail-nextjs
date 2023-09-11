@@ -1,24 +1,34 @@
-import { CSSProperties, FC } from "react"
+import { CSSProperties, FC, useMemo } from "react"
 import useHome from "@/features/Home/reducer"
 import DrinkList from "@/components/DrinkList"
-import PlusOutlined from "@ant-design/icons/PlusOutlined"
 import { useMediaQuery } from "react-responsive"
+import { Button } from "antd"
+import { HeartOutlined } from "@ant-design/icons"
 
 const Home: FC = () => {
   const { state, actions } = useHome()
   const styles = useStyles()
 
+  const data = useMemo(
+    () =>
+      (state.drinks || []).map(drink => ({
+        drink,
+        actions: [
+          <Button
+            shape={"circle"}
+            type={"text"}
+            key={drink.title}
+            icon={<HeartOutlined />}
+            onClick={() => actions.addToFavourites(drink.id)}
+          />
+        ]
+      })),
+    [actions, state.drinks]
+  )
+
   return (
     <div style={styles.container}>
-      <DrinkList
-        loading={state.isCocktailFetching || state.cocktailsRefetching}
-        drinks={state.cocktails || []}
-        cardAction={{
-          action: cocktail => actions.addToFavourites(cocktail.id),
-          label: "Add to",
-          icon: <PlusOutlined />
-        }}
-      />
+      <DrinkList loading={state.isCocktailFetching || state.cocktailsRefetching} data={data} />
     </div>
   )
 }
