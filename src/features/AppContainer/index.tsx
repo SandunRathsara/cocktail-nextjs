@@ -37,7 +37,8 @@ const useStyles: Style = () => {
       zIndex: 50
     },
     childrenContainer: {
-      marginTop: 50
+      marginTop: 50,
+      marginBottom: 10
     }
   }
 }
