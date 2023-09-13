@@ -2,7 +2,7 @@ import { CSSProperties, FC, useMemo } from "react"
 import useHome from "@/features/Home/reducer"
 import DrinkList from "@/components/DrinkList"
 import { useMediaQuery } from "react-responsive"
-import { Button } from "antd"
+import { Button, theme } from "antd"
 import { HeartFilled, HeartOutlined } from "@ant-design/icons"
 import Filters from "@/features/Home/components/Filters"
 
@@ -42,12 +42,13 @@ type Style = () => {
 
 const useStyles: Style = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 })
+  const { token } = theme.useToken()
 
   return {
     container: {
       ...(isMobile ? { paddingLeft: "0.5rem", paddingRight: "0.5rem" } : { paddingLeft: "5rem", paddingRight: "5rem" })
     },
-    actionIcon: { color: "red" }
+    actionIcon: { color: token.colorPrimary }
   }
 }
 
