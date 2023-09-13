@@ -3,7 +3,7 @@ import useHome from "@/features/Home/reducer"
 import DrinkList from "@/components/DrinkList"
 import { useMediaQuery } from "react-responsive"
 import { Button } from "antd"
-import { HeartOutlined } from "@ant-design/icons"
+import { HeartFilled, HeartOutlined } from "@ant-design/icons"
 import Filters from "@/features/Home/components/Filters"
 
 const Home: FC = () => {
@@ -19,12 +19,12 @@ const Home: FC = () => {
             shape={"circle"}
             type={"text"}
             key={drink.title}
-            icon={<HeartOutlined />}
+            icon={state.favouriteIds.includes(drink.id) ? <HeartFilled style={styles.actionIcon} /> : <HeartOutlined />}
             onClick={() => actions.addToFavourites(drink.id)}
           />
         ]
       })),
-    [actions, state.drinks]
+    [actions, state?.drinks, state.favouriteIds, styles.actionIcon]
   )
 
   return (
@@ -37,6 +37,7 @@ const Home: FC = () => {
 
 type Style = () => {
   container: CSSProperties
+  actionIcon: CSSProperties
 }
 
 const useStyles: Style = () => {
@@ -45,7 +46,8 @@ const useStyles: Style = () => {
   return {
     container: {
       ...(isMobile ? { paddingLeft: "0.5rem", paddingRight: "0.5rem" } : { paddingLeft: "5rem", paddingRight: "5rem" })
-    }
+    },
+    actionIcon: { color: "red" }
   }
 }
 

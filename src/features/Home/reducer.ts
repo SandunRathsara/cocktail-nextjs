@@ -7,7 +7,7 @@ import { useLocalStorage } from "usehooks-ts"
 
 export default function useHome() {
   const [searchString, setSearchString] = useState<string>()
-  const [, setFavouriteIds] = useLocalStorage<string[]>("favourites", [])
+  const [favouriteIds, setFavouriteIds] = useLocalStorage<string[]>("favourites", [])
   const message = useMessage()
 
   const {
@@ -23,13 +23,20 @@ export default function useHome() {
   }, [cocktailFetchingError, message])
 
   const addToFavourites = (id: string) => {
-    setFavouriteIds(currentFavourites => [...currentFavourites, id])
+    let msg = "Removed from favourites"
+    setFavouriteIds(currentFavourites => {
+      if (currentFavourites.includes(id)) return currentFavourites.filter(item => item !== id)
+      msg = "Added to favourites"
+      return [id, ...currentFavourites]
+    })
 
-    message.success("Added to favourites!")
+    message.success(msg)
   }
 
+  console.log("here", favouriteIds)
+
   return {
-    state: { drinks, cocktailFetchingError, isCocktailFetching, cocktailsRefetching },
+    state: { drinks, favouriteIds, cocktailFetchingError, isCocktailFetching, cocktailsRefetching },
     actions: { refetchCocktails, setSearchString, addToFavourites }
   }
 }
